@@ -1,0 +1,46 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+        buildToolsVersion = "29.0.2"
+        minSdkVersion = 16
+        compileSdkVersion = 29
+        targetSdkVersion = 29
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:3.5.3")
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+
+    // Workaround for https://issuetracker.google.com/117900475
+    // Remove when upgrading to AGP 3.4 or higher.
+    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
+        config.resolutionStrategy.eachDependency { details ->
+            details.useVersion("3.5.0-alpha03-5252756")
+        }
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url("$rootDir/../node_modules/react-native/android")
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("$rootDir/../node_modules/jsc-android/dist")
+        }
+
+        google()
+        jcenter()
+        maven { url 'https://www.jitpack.io' }
+
+    }
+}
