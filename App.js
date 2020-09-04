@@ -11,8 +11,8 @@ import ReconnectingWebSocket from 'reconnecting-websocket';
 import Message from './Message';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 
-const url = 'ws://192.168.1.180:8000/ws/chat'
-// const url = 'wss://super-nice-chat-app-backend.herokuapp.com/ws/chat'
+// const url = 'ws://192.168.1.180:8000/ws/chat'
+const url = 'wss://super-nice-chat-app-backend.herokuapp.com/ws/chat'
 
 
 class App extends Component{
@@ -70,41 +70,41 @@ class App extends Component{
     }
 
     render() {
-        return(
-            <WelcomeScreen />
-        )
-        // return (
-        //     <View style={styles.welcome_screen}>
-        //         <View style={styles.top_bar}>
-        //             <Text style={styles.title}>{this.state.status}</Text>
-        //             <TextInput
-        //                 onChangeText={value => this.setState({name:value})}
-        //                 style={styles.name_input} placeholder={'your name?'} placeholderTextColor={'#cd8f8f'}/>
-        //         </View>
-        //         <View style={styles.content}>
-        //             <ScrollView style={styles.scroll_view}>
-        //                 {this.state.messages.map(msg => (
-        //                     <Message msg={msg} name={this.state.name} />
-        //                 ))}
-        //             </ScrollView>
-        //         </View>
-        //         <View style={styles.bottom_bar}>
-        //             <TextInput
-        //                 onSubmitEditing={this.send}
-        //                 onChangeText={value => this.setState({input:value})}
-        //                 style={styles.message_input}
-        //                 value={this.state.input}
-        //                 placeholder={'type your message here...'}
-        //             />
-        //             <TouchableOpacity
-        //                 onLongPress={() => {alert('long press!')}}
-        //                 onPress={this.send}
-        //                 style={styles.send_btn}>
-        //                 <Text>Send</Text>
-        //             </TouchableOpacity>
-        //         </View>
-        //     </View>
-        // );
+        // return(
+        //     <WelcomeScreen />
+        // )
+        return (
+            <View style={styles.welcome_screen}>
+                <View style={styles.top_bar}>
+                    <Text style={styles.title}>{this.state.status}</Text>
+                    <TextInput
+                        onChangeText={value => this.setState({name:value})}
+                        style={styles.name_input} placeholder={'your name?'} placeholderTextColor={'#cd8f8f'}/>
+                </View>
+                <View style={styles.content}>
+                    <ScrollView style={styles.scroll_view}>
+                        {this.state.messages.map(msg => (
+                            <Message msg={msg} name={this.state.name} />
+                        ))}
+                    </ScrollView>
+                </View>
+                <View style={styles.bottom_bar}>
+                    <TextInput
+                        onSubmitEditing={this.send}
+                        onChangeText={value => this.setState({input:value})}
+                        style={styles.message_input}
+                        value={this.state.input}
+                        placeholder={'type your message here...'}
+                    />
+                    <TouchableOpacity
+                        onLongPress={() => {alert('long press!')}}
+                        onPress={this.send}
+                        style={styles.send_btn}>
+                        <Text>Send</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        );
     }
 }
 
